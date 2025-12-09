@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Sumiran Verma</title>
+
+  <style>
+    
+    :root {
+      --mainBlue: #0b57b7;      /* renamed this  */
+      --darkShade: #22222a;
+      --mutedBg: #f2f4f7;
+      --orangePop: #ff7a4a;
+      --cardish: #ffffff;
+      --curve: 0.6rem;
+      --gappy: 1rem;
+      --niceEase: 300ms cubic-bezier(.2,.9,.3,1);
+      font-size: 16px;
+    }
+
+    * {
+      box-sizing: border-box; 
+    }
+
+    body, html {
+      height: 100%; 
+      margin: 0;
+    }
+
+    /* Body styling */
+    body {
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      font-size: 1rem;
+      background: var(--mutedBg);
+      color: var(--darkShade);
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header area*/
+    header {
+      background: var(--mainBlue);
+      color: #fff;
+      padding: 0.85rem 1rem; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100; /* a bit random */
+    }
+
+    .logoText {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.5px; /* Not sure if I like this */
+    }
+
+    nav {
+      display: flex;
+      gap: 0.75rem; /* changed spacing slightly */
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      padding: 0.45rem 0.75rem;
+      border-radius: 0.4rem;
+      font-size: 0.92rem;
+      transition: var(--niceEase);
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+    }
+
+    /* Main container*/
+    .page-wrap {
+      max-width: 1100px;
+      padding: 1.4rem;
+      margin: 0 auto;
+    }
+
+    /* Hero section */
+    .hero-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      animation: fadeMeIn 500ms ease both;
+    }
+
+    .hero-topper {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .tiny-intro {
+      flex: 1;
+    }
+
+    .helloTag {
+      font-weight: 600;
+      opacity: 0.95;
+      font-size: 1.2rem;
+    }
+
+    .bigTitle {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 0.25rem 0;
+    }
+
+    .bigTitle .highlight {
+      color: var(--orangePop);
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 900;
+    }
+
+    .subtext {
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+      color: #666;
+    }
+
+    /* Avatar container  */
+    .profile-pic {
+      width: 7.25rem;
+      height: 7.25rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 6px solid rgba(255,255,255,0.35);
+      margin-left: auto;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(11,87,183,0.12);
+      animation: liftUp 4s ease-in-out infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* About section  */
+    .about-box {
+      background: #fff;
+      padding: 1.25rem;
+      border-radius: var(--curve);
+      margin-top: 1rem;
+      display: grid;
+      gap: 1rem;
+      box-shadow: 0 2px 10px rgba(16,24,40,0.04);
+      grid-template-columns: 1fr;
+    }
+
+    .about-box h3 {
+      margin: 0 0 0.5rem 0;
+    }
+
+    /* Skills area */
+    .skillArea {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skillBubble {
+      background: var(--mainBlue);
+      color: #fff;
+      padding: 0.7rem 1rem;
+      border-radius: 0.6rem;
+      min-width: 8rem;
+      flex: 1 1 30%;
+      text-align: center;
+      transition: transform var(--niceEase), box-shadow var(--niceEase);
+    }
+
+    .skillBubble:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(11,87,183,0.12);
+    }
+
+    /* Project cards */
+    .projectWrap {
+      margin-top: 1.25rem;
+    }
+
+    .projList {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .projCard {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(16,24,40,0.06);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #6b7280;
+      transition: transform var(--niceEase), box-shadow var(--niceEase);
+    }
+
+    .projCard:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(16,24,40,0.08);
+    }
+
+    /* Contact form */
+    .contact-box {
+      background: #fff;
+      padding: 1rem;
+      margin-top: 1.25rem;
+      border-radius: 0.6rem;
+    }
+
+    .formStack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .formStack input,
+    .formStack textarea {
+      padding: 0.6rem;
+      border: 1px solid rgba(16,24,40,0.06);
+      border-radius: 0.45rem;
+      font-size: 0.95rem;
+    }
+
+    .submitBtn {
+      background: var(--mainBlue);
+      color: #fff;
+      padding: 0.6rem 1rem;
+      border-radius: 0.45rem;
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
+      transition: transform var(--niceEase);
+    }
+
+    .submitBtn:hover {
+      background: #064a9e;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #fff;
+      background: var(--mainBlue);
+      padding: 0.8rem 0;
+      border-radius: 0.35rem;
+    }
+
+    /* Back to top */
+    .toTopBtn {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      background: var(--mainBlue);
+      padding: 0.6rem;
+      border-radius: 0.6rem;
+      color: #fff;
+      border: none;
+      display: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(11,87,183,0.16);
+    }
+
+    /* Animations */
+    @keyframes fadeMeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes liftUp {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Responsive bits */
+    @media (min-width: 48rem) {
+      .bigTitle {
+        font-size: 2.6rem;
+      }
+      .about-box {
+        grid-template-columns: 1fr 1fr;
+      }
+      .profile-pic {
+        width: 10rem;
+        height: 10rem;
+      }
+      .projList {
+        flex-direction: row;
+      }
+    }
+
+    @media (min-width: 75rem) {
+      body {
+        font-size: 1.03rem;
+      }
+      nav a {
+        font-size: 1rem;
+      }
+      .bigTitle {
+        font-size: 3rem;
+      }
+      .toTopBtn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logoText">My Portfolio</div>
+    <nav>
+      <a href="#aboutSec">About</a>
+      <a href="#skillSec">Skills</a>
+      <a href="#projectSec">Projects</a>
+      <a href="#contactSec">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-wrap">
+
+    <section class="hero-block">
+      <div class="hero-topper">
+        <div class="tiny-intro">
+          <div class="helloTag">Hi, I am Sumiran Verma</div>
+          <h1 class="bigTitle">
+            Full Stack
+            <span class="highlight">Developer</span>
+          </h1>
+          <p class="subtext">Building modern web apps with MERN. Still learning things every day :)</p>
+        </div>
+
+        <div class="profile-pic">
+          <img src="/Me 2.jpg" alt="My profile photo" />
+        </div>
+      </div>
+
+      <div class="about-box" id="aboutSec">
+        <div>
+          <h3>About Me</h3>
+          <p>I’m Sumiran, and I really like experimenting with UI layouts and making things feel nice and smooth.</p>
+        </div>
+        <div>
+          <h3>Quick Info</h3>
+          <p>Studying at K.R Mangalam University · Learning MERN · Curious about performance + accessibility.</p>
+        </div>
+      </div>
+
+      <section id="skillSec">
+        <div style="margin-top:1rem;font-weight:700;margin-bottom:0.5rem">My Skills</div>
+        <div class="skillArea">
+          <div class="skillBubble">
+            HTML
+            <div style="font-size:0.75rem;opacity:0.9">Beginner</div>
+          </div>
+          <div class="skillBubble">
+            CSS
+            <div style="font-size:0.75rem;opacity:0.9">Beginner</div>
+          </div>
+          <div class="skillBubble">
+            JavaScript
+            <div style="font-size:0.75rem;opacity:0.9">Learning</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="projectWrap" id="projectSec">
+        <h3 style="margin-top:1rem;font-weight:700;margin-bottom:0.5rem">My Projects</h3>
+
+        <div class="projList">
+          <div class="projCard">
+            Project 1 <br>
+            <small>Just basic HTML/CSS stuff.</small>
+          </div>
+
+          <div class="projCard">
+            Project 2 <br>
+            <small>Another small experiment I did.</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-box" id="contactSec">
+        <h3 style="margin:0 0 0.6rem 0;font-weight:700">Contact Me</h3>
+        <form class="formStack" onsubmit="event.preventDefault(); alert('Message sent! (demo)');">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <textarea rows="4" placeholder="Message"></textarea>
+          <button class="submitBtn">Send</button>
+        </form>
+      </section>
+
+    </section>
+
+    <footer>
+      © 2025 Sumiran Verma — I guess all rights reserved.
+    </footer>
+  </main>
+
+  <button class="toTopBtn"
+    onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    ↑ Top
+  </button>
+
+  <script>
+    // Show the “back to top” thingy after scrolling
+    const goUpBtn = document.querySelector('.toTopBtn');
+
+    window.addEventListener('scroll', () => {
+      // I could use classList but this works
+      if (window.scrollY > 300) {
+        goUpBtn.style.display = 'block';
+      } else {
+        goUpBtn.style.display = 'none';
+      }
+    });
+
+    // leftover thought:
+    // maybe add fade instead of display toggle later
+  </script>
+
+</body>
+</html>
